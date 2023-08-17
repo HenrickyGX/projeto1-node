@@ -1,9 +1,26 @@
 import express from "express";
 const app = express();
+app.use(express.json())
 const PORT = 3000;
-app.get("/", (req, res) => {
-  res.send("Olá, Mundo!");
-});
+
+//visivel no navegador é o metodo GET
+app.get('/hora', function(req,res){
+    res.json({horaAtual: 'agora são 19h47'})
+})
+//POST
+app.post('/soma', (request,response)=>{
+    //const {val1,val2} = request.params
+    //const {q1,q2} = request.query
+    const {v1,v2} = request.body
+    console.log(v1,v2)
+    const somatorio = v1 + v2
+    response.json({resultado:somatorio})
+
+})
+//PUT
+app.put('')
+app.delete('')
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
